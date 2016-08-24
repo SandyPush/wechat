@@ -1,0 +1,359 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/imooc/.nvm/versions/node/v4.4.0/bin/node',
+1 verbose cli   '/home/imooc/.nvm/versions/node/v4.4.0/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'path',
+1 verbose cli   'express',
+1 verbose cli   '--save' ]
+2 info using npm@2.14.20
+3 info using node@v4.4.0
+4 verbose install initial load of /data/webroot/tasks/original/package.json
+5 warn package.json tasks@1.0.0 No description
+6 warn package.json tasks@1.0.0 No repository field.
+7 warn package.json tasks@1.0.0 No README data
+8 verbose installManyTop reading scoped package data from /data/webroot/tasks/original/node_modules/express/package.json
+9 verbose installManyTop reading scoped package data from /data/webroot/tasks/original/node_modules/koa/package.json
+10 verbose installManyTop reading scoped package data from /data/webroot/tasks/original/node_modules/koa-request/package.json
+11 verbose installManyTop reading scoped package data from /data/webroot/tasks/original/node_modules/xss/package.json
+12 info package.json xss@0.2.10 No license field.
+13 verbose readDependencies loading dependencies from /data/webroot/tasks/original/package.json
+14 silly cache add args [ 'path', null ]
+15 verbose cache add spec path
+16 verbose install express is installed as 4.13.4
+17 silly cache add args [ 'express@^4.13.4', null ]
+18 verbose cache add spec express@^4.13.4
+19 silly cache add parsed spec Result {
+19 silly cache add   raw: 'express@^4.13.4',
+19 silly cache add   scope: null,
+19 silly cache add   name: 'express',
+19 silly cache add   rawSpec: '^4.13.4',
+19 silly cache add   spec: '>=4.13.4 <5.0.0',
+19 silly cache add   type: 'range' }
+20 silly addNamed express@>=4.13.4 <5.0.0
+21 verbose addNamed ">=4.13.4 <5.0.0" is a valid semver range for express
+22 silly addNameRange { name: 'express', range: '>=4.13.4 <5.0.0', hasData: false }
+23 silly mapToRegistry name express
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry uri https://registry.npmjs.org/express
+27 verbose addNameRange registry:https://registry.npmjs.org/express not in flight; fetching
+28 silly cache add parsed spec Result {
+28 silly cache add   raw: 'path',
+28 silly cache add   scope: null,
+28 silly cache add   name: 'path',
+28 silly cache add   rawSpec: '',
+28 silly cache add   spec: 'latest',
+28 silly cache add   type: 'tag' }
+29 silly addNamed path@latest
+30 verbose addNamed "latest" is being treated as a dist-tag for path
+31 info addNameTag [ 'path', 'latest' ]
+32 silly mapToRegistry name path
+33 silly mapToRegistry using default registry
+34 silly mapToRegistry registry https://registry.npmjs.org/
+35 silly mapToRegistry uri https://registry.npmjs.org/path
+36 verbose addNameTag registry:https://registry.npmjs.org/path not in flight; fetching
+37 verbose request uri https://registry.npmjs.org/path
+38 verbose request no auth needed
+39 info attempt registry request try #1 at 11:56:50 PM
+40 verbose request id 6b25af615bb81794
+41 http request GET https://registry.npmjs.org/path
+42 verbose request uri https://registry.npmjs.org/express
+43 verbose request no auth needed
+44 info attempt registry request try #1 at 11:56:50 PM
+45 verbose etag "DT9B33GOVEB3UQZVX90J30SZX"
+46 http request GET https://registry.npmjs.org/express
+47 info retry will retry, error on last attempt: Error: connect ECONNREFUSED 127.0.0.1:443
+48 info retry will retry, error on last attempt: Error: connect ECONNREFUSED 127.0.0.1:443
+49 info attempt registry request try #2 at 11:57:05 PM
+50 http request GET https://registry.npmjs.org/path
+51 info attempt registry request try #2 at 11:57:05 PM
+52 verbose etag "DT9B33GOVEB3UQZVX90J30SZX"
+53 http request GET https://registry.npmjs.org/express
+54 info retry will retry, error on last attempt: Error: connect ECONNREFUSED 127.0.0.1:443
+55 info retry will retry, error on last attempt: Error: connect ECONNREFUSED 127.0.0.1:443
+56 info attempt registry request try #3 at 11:58:10 PM
+57 http request GET https://registry.npmjs.org/path
+58 info attempt registry request try #3 at 11:58:10 PM
+59 verbose etag "DT9B33GOVEB3UQZVX90J30SZX"
+60 http request GET https://registry.npmjs.org/express
+61 silly get cb [ 304, undefined ]
+62 verbose etag https://registry.npmjs.org/express from cache
+63 verbose get saving express to /home/imooc/.npm/registry.npmjs.org/express/.cache.json
+64 verbose correctMkdir /home/imooc/.npm correctMkdir not in flight; initializing
+65 silly addNameRange number 2 { name: 'express', range: '>=4.13.4 <5.0.0', hasData: true }
+66 silly addNameRange versions [ 'express',
+66 silly addNameRange   [ '0.14.0',
+66 silly addNameRange     '0.14.1',
+66 silly addNameRange     '1.0.0',
+66 silly addNameRange     '1.0.1',
+66 silly addNameRange     '1.0.2',
+66 silly addNameRange     '1.0.3',
+66 silly addNameRange     '1.0.4',
+66 silly addNameRange     '1.0.5',
+66 silly addNameRange     '1.0.6',
+66 silly addNameRange     '1.0.7',
+66 silly addNameRange     '1.0.8',
+66 silly addNameRange     '2.0.0',
+66 silly addNameRange     '2.1.0',
+66 silly addNameRange     '2.1.1',
+66 silly addNameRange     '2.2.0',
+66 silly addNameRange     '2.2.1',
+66 silly addNameRange     '2.2.2',
+66 silly addNameRange     '2.3.0',
+66 silly addNameRange     '2.3.1',
+66 silly addNameRange     '2.3.2',
+66 silly addNameRange     '2.3.3',
+66 silly addNameRange     '2.3.4',
+66 silly addNameRange     '2.3.5',
+66 silly addNameRange     '2.3.6',
+66 silly addNameRange     '2.3.7',
+66 silly addNameRange     '2.3.8',
+66 silly addNameRange     '2.3.9',
+66 silly addNameRange     '2.3.10',
+66 silly addNameRange     '2.3.11',
+66 silly addNameRange     '2.3.12',
+66 silly addNameRange     '2.4.0',
+66 silly addNameRange     '2.4.1',
+66 silly addNameRange     '2.4.2',
+66 silly addNameRange     '2.4.3',
+66 silly addNameRange     '2.4.4',
+66 silly addNameRange     '2.4.5',
+66 silly addNameRange     '2.4.6',
+66 silly addNameRange     '2.4.7',
+66 silly addNameRange     '2.5.0',
+66 silly addNameRange     '2.5.1',
+66 silly addNameRange     '2.5.2',
+66 silly addNameRange     '2.5.3',
+66 silly addNameRange     '2.5.4',
+66 silly addNameRange     '2.5.5',
+66 silly addNameRange     '2.5.6',
+66 silly addNameRange     '2.5.7',
+66 silly addNameRange     '2.5.8',
+66 silly addNameRange     '2.5.9',
+66 silly addNameRange     '2.5.10',
+66 silly addNameRange     '2.5.11',
+66 silly addNameRange     '3.0.0',
+66 silly addNameRange     '3.0.1',
+66 silly addNameRange     '3.0.2',
+66 silly addNameRange     '3.0.3',
+66 silly addNameRange     '3.0.4',
+66 silly addNameRange     '3.0.5',
+66 silly addNameRange     '3.0.6',
+66 silly addNameRange     '3.1.0',
+66 silly addNameRange     '3.1.1',
+66 silly addNameRange     '3.1.2',
+66 silly addNameRange     '3.2.0',
+66 silly addNameRange     '3.2.1',
+66 silly addNameRange     '3.2.2',
+66 silly addNameRange     '3.2.3',
+66 silly addNameRange     '3.2.4',
+66 silly addNameRange     '3.2.5',
+66 silly addNameRange     '3.2.6',
+66 silly addNameRange     '3.3.0',
+66 silly addNameRange     '3.3.1',
+66 silly addNameRange     '3.3.2',
+66 silly addNameRange     '3.3.3',
+66 silly addNameRange     '3.3.4',
+66 silly addNameRange     '3.3.5',
+66 silly addNameRange     '3.3.6',
+66 silly addNameRange     '1.0.0-beta',
+66 silly addNameRange     '1.0.0-beta2',
+66 silly addNameRange     '1.0.0-rc',
+66 silly addNameRange     '1.0.0-rc2',
+66 silly addNameRange     '1.0.0-rc3',
+66 silly addNameRange     '1.0.0-rc4',
+66 silly addNameRange     '2.0.0-beta',
+66 silly addNameRange     '2.0.0-beta2',
+66 silly addNameRange     '2.0.0-beta3',
+66 silly addNameRange     '2.0.0-rc',
+66 silly addNameRange     '2.0.0-rc2',
+66 silly addNameRange     '2.0.0-rc3',
+66 silly addNameRange     '3.0.0-alpha1',
+66 silly addNameRange     '3.0.0-alpha2',
+66 silly addNameRange     '3.0.0-alpha3',
+66 silly addNameRange     '3.0.0-alpha4',
+66 silly addNameRange     '3.0.0-alpha5',
+66 silly addNameRange     '3.0.0-beta1',
+66 silly addNameRange     '3.0.0-beta2',
+66 silly addNameRange     '3.0.0-beta3',
+66 silly addNameRange     '3.0.0-beta4',
+66 silly addNameRange     '3.0.0-beta6',
+66 silly addNameRange     '3.0.0-beta7',
+66 silly addNameRange     '3.0.0-rc1',
+66 silly addNameRange     '3.0.0-rc2',
+66 silly addNameRange     '3.0.0-rc3',
+66 silly addNameRange     '3.0.0-rc4',
+66 silly addNameRange     '3.0.0-rc5',
+66 silly addNameRange     '3.3.7',
+66 silly addNameRange     '3.3.8',
+66 silly addNameRange     '3.4.0',
+66 silly addNameRange     '3.4.1',
+66 silly addNameRange     '3.4.2',
+66 silly addNameRange     '3.4.3',
+66 silly addNameRange     '3.4.4',
+66 silly addNameRange     '3.4.5',
+66 silly addNameRange     '3.4.6',
+66 silly addNameRange     '3.4.7',
+66 silly addNameRange     '3.4.8',
+66 silly addNameRange     '4.0.0-rc1',
+66 silly addNameRange     '4.0.0-rc2',
+66 silly addNameRange     '3.5.0',
+66 silly addNameRange     '4.0.0-rc3',
+66 silly addNameRange     '4.0.0-rc4',
+66 silly addNameRange     '3.5.1',
+66 silly addNameRange     '4.0.0',
+66 silly addNameRange     '3.5.2',
+66 silly addNameRange     '4.1.0',
+66 silly addNameRange     '4.1.1',
+66 silly addNameRange     '3.5.3',
+66 silly addNameRange     '4.1.2',
+66 silly addNameRange     '3.6.0',
+66 silly addNameRange     '4.2.0',
+66 silly addNameRange     '3.7.0',
+66 silly addNameRange     '3.8.0',
+66 silly addNameRange     '4.3.0',
+66 silly addNameRange     '4.3.1',
+66 silly addNameRange     '3.8.1',
+66 silly addNameRange     '4.3.2',
+66 silly addNameRange     '3.9.0',
+66 silly addNameRange     '4.4.0',
+66 silly addNameRange     '4.4.1',
+66 silly addNameRange     '3.10.0',
+66 silly addNameRange     '3.10.1',
+66 silly addNameRange     '3.10.2',
+66 silly addNameRange     '3.10.3',
+66 silly addNameRange     '3.10.4',
+66 silly addNameRange     '4.4.2',
+66 silly addNameRange     '3.10.5',
+66 silly addNameRange     '4.4.3',
+66 silly addNameRange     '3.11.0',
+66 silly addNameRange     '4.4.4',
+66 silly addNameRange     '3.12.0',
+66 silly addNameRange     '3.12.1',
+66 silly addNameRange     '4.4.5',
+66 silly addNameRange     '3.13.0',
+66 silly addNameRange     '4.5.0',
+66 silly addNameRange     '4.5.1',
+66 silly addNameRange     '3.14.0',
+66 silly addNameRange     '4.6.0',
+66 silly addNameRange     '4.6.1',
+66 silly addNameRange     '3.15.0',
+66 silly addNameRange     '4.7.0',
+66 silly addNameRange     '3.15.1',
+66 silly addNameRange     '4.7.1',
+66 silly addNameRange     '3.15.2',
+66 silly addNameRange     '4.7.2',
+66 silly addNameRange     '4.7.3',
+66 silly addNameRange     '3.15.3',
+66 silly addNameRange     '4.7.4',
+66 silly addNameRange     '3.16.0',
+66 silly addNameRange     '4.8.0',
+66 silly addNameRange     '3.16.1',
+66 silly addNameRange     '4.8.1',
+66 silly addNameRange     '3.16.2',
+66 silly addNameRange     '4.8.2',
+66 silly addNameRange     '3.16.3',
+66 silly addNameRange     '3.16.4',
+66 silly addNameRange     '4.8.3',
+66 silly addNameRange     '3.16.5',
+66 silly addNameRange     '3.16.6',
+66 silly addNameRange     '4.8.4',
+66 silly addNameRange     '3.16.7',
+66 silly addNameRange     '4.8.5',
+66 silly addNameRange     '3.16.8',
+66 silly addNameRange     '4.8.6',
+66 silly addNameRange     '3.16.9',
+66 silly addNameRange     '4.8.7',
+66 silly addNameRange     '3.16.10',
+66 silly addNameRange     '4.8.8',
+66 silly addNameRange     '3.17.0',
+66 silly addNameRange     '3.17.1',
+66 silly addNameRange     '4.9.0',
+66 silly addNameRange     '3.17.2',
+66 silly addNameRange     '4.9.1',
+66 silly addNameRange     '4.9.2',
+66 silly addNameRange     '3.17.3',
+66 silly addNameRange     '4.9.3',
+66 silly addNameRange     '3.17.4',
+66 silly addNameRange     '4.9.4',
+66 silly addNameRange     '3.17.5',
+66 silly addNameRange     '4.9.5',
+66 silly addNameRange     '3.17.6',
+66 silly addNameRange     '3.17.7',
+66 silly addNameRange     '4.9.6',
+66 silly addNameRange     '4.9.7',
+66 silly addNameRange     '3.17.8',
+66 silly addNameRange     '4.9.8',
+66 silly addNameRange     '3.18.0',
+66 silly addNameRange     '3.18.1',
+66 silly addNameRange     '4.10.0',
+66 silly addNameRange     '3.18.2',
+66 silly addNameRange     '4.10.1',
+66 silly addNameRange     '5.0.0-alpha.1',
+66 silly addNameRange     '3.18.3',
+66 silly addNameRange     '4.10.2',
+66 silly addNameRange     '3.18.4',
+66 silly addNameRange     '4.10.3',
+66 silly addNameRange     '4.10.4',
+66 silly addNameRange     '4.10.5',
+66 silly addNameRange     '3.18.5',
+66 silly addNameRange     '3.18.6',
+66 silly addNameRange     '4.10.6',
+66 silly addNameRange     '4.10.7',
+66 silly addNameRange     '3.19.0',
+66 silly addNameRange     '4.10.8',
+66 silly addNameRange     '4.11.0',
+66 silly addNameRange     '3.19.1',
+66 silly addNameRange     '4.11.1',
+66 silly addNameRange     '3.19.2',
+66 silly addNameRange     '4.11.2',
+66 silly addNameRange     '3.20.0',
+66 silly addNameRange     '4.12.0',
+66 silly addNameRange     '3.20.1',
+66 silly addNameRange     '4.12.1',
+66 silly addNameRange     '4.12.2',
+66 silly addNameRange     '3.20.2',
+66 silly addNameRange     '4.12.3',
+66 silly addNameRange     '3.20.3',
+66 silly addNameRange     '4.12.4',
+66 silly addNameRange     '3.21.0',
+66 silly addNameRange     '4.13.0',
+66 silly addNameRange     '3.21.1',
+66 silly addNameRange     '4.13.1',
+66 silly addNameRange     '5.0.0-alpha.2',
+66 silly addNameRange     '3.21.2',
+66 silly addNameRange     '4.13.2',
+66 silly addNameRange     '4.13.3',
+66 silly addNameRange     '4.13.4' ] ]
+67 silly addNamed express@4.13.4
+68 verbose addNamed "4.13.4" is a plain semver version for express
+69 silly cache afterAdd express@4.13.4
+70 verbose afterAdd /home/imooc/.npm/express/4.13.4/package/package.json not in flight; writing
+71 verbose correctMkdir /home/imooc/.npm correctMkdir not in flight; initializing
+72 verbose afterAdd /home/imooc/.npm/express/4.13.4/package/package.json written
+73 verbose stack Error: connect ECONNREFUSED 127.0.0.1:443
+73 verbose stack     at Object.exports._errnoException (util.js:870:11)
+73 verbose stack     at exports._exceptionWithHostPort (util.js:893:20)
+73 verbose stack     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1057:14)
+74 verbose cwd /data/webroot/tasks/original
+75 error Linux 3.16.0-72-generic
+76 error argv "/home/imooc/.nvm/versions/node/v4.4.0/bin/node" "/home/imooc/.nvm/versions/node/v4.4.0/bin/npm" "install" "path" "express" "--save"
+77 error node v4.4.0
+78 error npm  v2.14.20
+79 error code ECONNREFUSED
+80 error errno ECONNREFUSED
+81 error syscall connect
+82 error Error: connect ECONNREFUSED 127.0.0.1:443
+82 error     at Object.exports._errnoException (util.js:870:11)
+82 error     at exports._exceptionWithHostPort (util.js:893:20)
+82 error     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1057:14)
+82 error  { [Error: connect ECONNREFUSED 127.0.0.1:443]
+82 error   code: 'ECONNREFUSED',
+82 error   errno: 'ECONNREFUSED',
+82 error   syscall: 'connect',
+82 error   address: '127.0.0.1',
+82 error   port: 443,
+82 error   parent: 'tasks' }
+83 error If you are behind a proxy, please make sure that the
+83 error 'proxy' config is set properly.  See: 'npm help config'
+84 verbose exit [ 1, true ]
