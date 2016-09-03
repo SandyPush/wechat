@@ -7,15 +7,14 @@ var menu = require("./menu")
 var wechatApi = new Wechat(config.wechat)
 
 exports.replay = function* (next) {
-    // wechatApi.deleteMenu()
-    // .then(function(){
-    //     return wechatApi.createMenu(menu)
-    // })
-    // .then(function(msg){
-    //     console.log(msg)
-    //     console.log('更新菜单')
-    // })
-    console.log(this.weixin)
+    wechatApi.deleteMenu()
+    .then(function(){
+        return wechatApi.createMenu(menu)
+    })
+    .then(function(msg){
+        console.log(msg)
+        console.log('更新菜单')
+    })
     var message = this.weixin
     if(message.MsgType ==='event') {
         if(message.Event ==='subscribe') {
@@ -270,6 +269,24 @@ exports.replay = function* (next) {
             var msgData = yield wechatApi.sendByGroup('text',text,102)
             console.log(msgData)
             replay = "OK"
+            
+        }
+        else if(content==='16'){
+            var mpnews = {
+                media_id:'a3PVUV0h7P6Ib_GUWrcfnXQ4KDf5148qm2OKybZawqM'
+            }
+            var text = {
+              "content":"群发文本消息"
+           }
+            var msgData = yield wechatApi.previewMass('mpnews',mpnews,"or5f8w_SJ47ABRQlxFTfmh1TJuhA")
+            console.log(msgData)
+            replay = "OK"
+            
+        }
+        else if(content==='17'){
+            var msgData = yield wechatApi.checkMass("6322690570575301325")
+            console.log(msgData)
+            replay = "测试消息有没有发送成功"
             
         }
 

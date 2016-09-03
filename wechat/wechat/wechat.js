@@ -33,15 +33,19 @@ var api = {
         del:prefix+"groups/delete?",
     },
     user:{
-    //    https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID
         remark:prefix+ 'user/info/updateremark?',
         fetch:prefix+ 'user/info?',
         batchFetch:prefix+ 'user/info/batchget?',
         list:prefix+ 'user/get?'
     },
     mass:{
-        ///message/mass/sendall?access_token=ACCESS_TOKEN
-        group:prefix + 'message/mass/sendall?'
+    //message/mass/get?access_token=ACCESS_TOKEN
+        group:prefix + 'message/mass/sendall?',
+        openId:prefix + 'message/mass/send?',
+        del:prefix + 'message/mass/delete?',
+        preview:prefix + 'message/mass/preview?',
+        check:prefix + 'message/mass/get?'
+        
     },
     menu:{
         create:prefix + "menu/create?",
@@ -499,7 +503,7 @@ Wechat.prototype.remarkUser = function(openId,remark) {
                 var url = api.user.remark+'access_token='+data.access_token
                 var form = {
                     "openid":openId,
-	                "remark":remark
+                    "remark":remark
                 }
                 request({method:'POST',url:url,body:form,json:true}).then(function(response) {
                    var _data = response[1]
@@ -594,7 +598,6 @@ Wechat.prototype.sendByGroup = function(type,message,groupId) {
             group_id:groupId
         }
     }
-    console.log(msg)
     return new Promise(function(resolve,reject) {
         that.fatchAccessToken()
             .then(function(data){
@@ -614,6 +617,113 @@ Wechat.prototype.sendByGroup = function(type,message,groupId) {
         })
     })
 }
+
+Wechat.prototype.sendByOpenId = function(type,message,openIds) {
+    var that = this
+    var msg = {
+        msgtype:type,
+        touser:openIds
+    }
+    msg[type] = message
+    return new Promise(function(resolve,reject) {
+        that.fatchAccessToken()
+            .then(function(data){
+                var url = api.mass.openId+'access_token='+data.access_token
+                request({method:'POST',url:url,body:msg,json:true}).then(function(response) {
+                   var _data = response[1]
+                   if(_data){
+                        resolve(_data)
+                   }
+                   else{
+                       throw new Error('send by  id  error')
+                   }
+                })
+                .catch(function(err){
+                     reject(err)
+                })
+        })
+    })
+}
+
+//只能删除图文或者视频
+Wechat.prototype.deleteMass = function(msgId) {
+    var that = this
+    return new Promise(function(resolve,reject) {
+        that.fatchAccessToken()
+            .then(function(data){
+                var url = api.mass.del+'access_token='+data.access_token
+                var form = {
+                    msg_id:msgId
+                }
+                request({method:'POST',url:url,body:form,json:true}).then(function(response) {
+                   var _data = response[1]
+                   if(_data){
+                        resolve(_data)
+                   }
+                   else{
+                       throw new Error('send by  id  error')
+                   }
+                })
+                .catch(function(err){
+                     reject(err)
+                })
+        })
+    })
+}
+
+Wechat.prototype.previewMass = function(type,message,openId) {
+    var that = this
+     var msg = {
+        msgtype:type,
+        touser:openId
+    }
+    msg[type] = message
+    return new Promise(function(resolve,reject) {
+        that.fatchAccessToken()
+            .then(function(data){
+                var url = api.mass.preview+'access_token='+data.access_token
+                request({method:'POST',url:url,body:msg,json:true}).then(function(response) {
+                   var _data = response[1]
+                   if(_data){
+                        resolve(_data)
+                   }
+                   else{
+                       throw new Error('preview  error')
+                   }
+                })
+                .catch(function(err){
+                     reject(err)
+                })
+        })
+    })
+}
+
+Wechat.prototype.checkMass = function(msgId) {
+    var that = this
+    
+    return new Promise(function(resolve,reject) {
+        that.fatchAccessToken()
+            .then(function(data){
+                var url = api.mass.check+'access_token='+data.access_token
+                 var form = {
+                     msg_id:msgId
+                }
+                request({method:'POST',url:url,body:form,json:true}).then(function(response) {
+                   var _data = response[1]
+                   if(_data){
+                        resolve(_data)
+                   }
+                   else{
+                       throw new Error('check   error')
+                   }
+                })
+                .catch(function(err){
+                     reject(err)
+                })
+        })
+    })
+}
+
 Wechat.prototype.createMenu = function(menu) {
     
   var that = this
@@ -645,6 +755,7 @@ Wechat.prototype.fetchMenu = function() {
                 var url = api.menu.fetch+'access_token='+data.access_token
                 request({url:url,json:true}).then(function(response) {
                    var _data = response[1]
+
                    if(_data){
                         resolve(_data)
                    }
