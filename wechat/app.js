@@ -10,7 +10,7 @@ var config = require("./config")
 
 var app =  new Koa()
 
-app.use(wechat(config.wechat),weixin.replay)
+app.use(wechat(config.wechat,weixin.replay))
 
 app.listen(3000)
 console.log('it work 3000')
