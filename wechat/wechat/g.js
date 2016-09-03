@@ -36,7 +36,7 @@ function Wechat(opts){
             that.saveAccessToken(data)
         })
 }
-Wachat.prototype.isValidAccessToken = function (data){
+Wechat.prototype.isValidAccessToken = function (data){
     if (!data || !data.access_token || !data.expires_in) {
         return false
     }
