@@ -88,7 +88,7 @@ app.use(function *(next){
         var data = yield wechatApi.fetchAccessToken()
         var access_token = data.access_token
         var ticketData = yield wechatApi.fetchTicket(access_token)
-        var ticket = data.ticket
+        var ticket = ticketData.ticket
         var url = this.href
         var params = sign(ticket,url)
         this.body = ejs.render(tpl,params)
