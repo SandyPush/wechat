@@ -29,7 +29,7 @@ var tpl = heredoc(function(){/*
 var app =  new Koa()
 app.use(function *(next){
     if(this.url.indexOf('/movie')> -1) {
-        this.body = ejs.rander(tpl,{})
+        this.body = ejs.render(tpl,{})
         return next
     }
     yield next
