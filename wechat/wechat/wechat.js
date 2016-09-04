@@ -76,7 +76,7 @@ function Wechat(opts){
     this.getTicket = opts.getTicket
     this.saveTicket = opts.saveTicket
 
-    this.fatchAccessToken()
+    this.fetchAccessToken()
 }
 Wechat.prototype.isValidAccessToken = function (data){
     if (!data || !data.access_token || !data.expires_in) {
@@ -109,7 +109,7 @@ Wechat.prototype.updateAccessToken = function (){
 }
 
 
-Wechat.prototype.fatchAccessToken = function(data) {
+Wechat.prototype.fetchAccessToken = function(data) {
     var that = this
     if(this.access_token && this.expires_in){
         if(this.isValidAccessToken(this)) {
