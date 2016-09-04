@@ -61,6 +61,9 @@ var api = {
     },
     shotUrl: {
         create:prefix+ "shorturl?",
+    },
+    ticket: {
+        get:prefix + 'ticket/getticket?'
     }
     
 }
@@ -70,6 +73,9 @@ function Wechat(opts){
     this.appSecret = opts.appSecret
     this.getAccessToken = opts.getAccessToken
     this.saveAccessToken = opts.saveAccessToken
+    this.getTicket = opts.getTicket
+    this.saveTicket = opts.saveTicket
+
     this.fatchAccessToken()
 }
 Wechat.prototype.isValidAccessToken = function (data){
@@ -896,6 +902,59 @@ Wechat.prototype.semantic = function(semanticData) {
         })
     })
 }
+
+Wechat.prototype.fetchTicket = function(access_token) {
+    var that = this
+
+    return this.getTicket()
+        .then(function(data){
+            try{
+                data = JSON.parse(data)
+            }
+            catch(e) {
+                return that.updateTicket(access_token)
+            }
+            
+            if(that.isValidTicket(data)){
+                return Promise.resolve(data)
+            }
+            else {
+                return that.updateTicket()
+            }
+        })
+        .then(function(data){
+            that.saveTicket(data)
+            return Promise.resolve(data)
+        })
+}
+Wechat.prototype.updateTicket = function (access_token){
+    var url = api.ticket.get+'&access_token='+access_token+'&type=jsapi'
+    return new Promise(function(resolve,reject) {
+        request({url:url,json:true}).then(function(response) {
+            var data = response[1]
+            var now = (new Date().getTime())
+            var expires_in = now+(data.expires_in-20)*1000
+            data.expires_in = expires_in
+            resolve(data)
+        })
+    })
+}
+Wechat.prototype.isValidTicket = function (data){
+    if (!data || !data.ticket || !data.expires_in) {
+        return false
+    }
+    var ticket = data.access_token
+    var expires_in = data.expires_in
+    var now = (new Date().getTime())
+    if(ticket && tinow<expires_in){
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+
 Wechat.prototype.reply = function() {
     var content = this.body
     var message = this.weixin
