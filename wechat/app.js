@@ -9,7 +9,7 @@ var reply = require('./wx/reply')
 
 var app =  new Koa()
 app.use(function *(next){
-    if(this.url.indexOf('./movie')> -1) {
+    if(this.url.indexOf('/movie')> -1) {
         this.body = '<h1> Hi there</h1>'
         return next
     }
