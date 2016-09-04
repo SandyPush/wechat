@@ -5,7 +5,9 @@ var request = Promise.promisify(require("request"))
 var util = require('./util')
 var fs = require('fs')
 var prefix = "https://api.weixin.qq.com/cgi-bin/"
+var mpPrefix = "https://mp.weixin.qq.com/cgi-bin/"
 var api = {
+    semanticUrl : "https://api.weixin.qq.com/semantic/semproxy/search?"
     accessToken:prefix+"token?grant_type=client_credential",
     temporary: {
         upload:prefix+"media/upload?",
@@ -52,6 +54,13 @@ var api = {
         fetch:prefix + "menu/get?",
         del:prefix + "menu/delete?",
         current:prefix + "get_current_selfmenu_info?",
+    },
+    qrcode:{
+        create:prefix + "qrcode/create?",
+        show:mpPrefix + "showqrcode?",
+    },
+    shotUrl: {
+        create:prefix+ "shorturl?",
     }
     
 }
@@ -804,6 +813,81 @@ Wechat.prototype.getCurrentMenu = function(menu) {
                    }
                    else{
                        throw new Error('menu   error')
+                   }
+                })
+                .catch(function(err){
+                     reject(err)
+                })
+        })
+    })
+}
+Wechat.prototype.createQrcode = function(qr) {
+  var that = this
+    return new Promise(function(resolve,reject) {
+        that.fatchAccessToken()
+            .then(function(data){
+                var url = api.menu.del+'access_token='+data.access_token
+                request({method:'GET',url:url,json:true}).then(function(response) {
+                   var _data = response[1]
+                   if(_data){
+                        resolve(_data)
+                   }
+                   else{
+                       throw new Error('deleteMenu   error')
+                   }
+                })
+                .catch(function(err){
+                     reject(err)
+                })
+        })
+    })
+}
+Wechat.prototype.showQrcode = function(ticket){
+    return api.qrcode.show+'ticket=' + encodeURI(ticket)
+}
+Wechat.prototype.createShorurl = function(action,url) {
+    urlTypr = action | 'long_url'
+    var that = this
+    return new Promise(function(resolve,reject) {
+        that.fatchAccessToken()
+            .then(function(data){
+                var url = api.shotUrl.create+'access_token='+data.access_token
+                var form = {
+                    action:urlType,
+                    long_url:url
+                }
+
+                request({method:'POST',body:form,url:url,json:true}).then(function(response) {
+                   var _data = response[1]
+                   if(_data){
+                        resolve(_data)
+                   }
+                   else{
+                       throw new Error('short   error')
+                   }
+                })
+                .catch(function(err){
+                     reject(err)
+                })
+        })
+    })
+}
+Wechat.prototype.semantic = function(semanticData) {
+    var that = this
+    return new Promise(function(resolve,reject) {
+        that.fatchAccessToken()
+            .then(function(data){
+                var url = api.semanticUrl+'access_token='+data.access_token
+                semanticData.appid = data.appID
+
+
+                request({method:'POST',body:semanticData,url:url,json:true}).then(function(response) {
+                   var _data = response[1]
+                   if(_data){
+                        resolve(_data)
+                   }
+                   else{
+                       throw new Error('short   error')
                    }
                 })
                 .catch(function(err){

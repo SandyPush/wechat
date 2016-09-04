@@ -289,6 +289,53 @@ exports.replay = function* (next) {
             replay = "测试消息有没有发送成功"
             
         }
+        else if(content ==='18'){
+            //{"expire_seconds": 604800, "action_name": "QR_SCENE", "action_info": {"scene": {"scene_id": 123}}}
+            var tempQr = {
+                expire_seconds:400000,
+                action_name:'QR_SCENE',
+                action_info:{
+                    scene:{
+                       scene_id:'123' 
+                    }
+                }
+            }
+            var permQr = {
+                expire_seconds:400000,
+                action_name:'QR_LIMIT_SCENE',
+                action_info:{
+                    scene:{
+                       scene_id:123
+                    }
+                }
+            }
+            var permStrQr = {
+                expire_seconds:400000,
+                action_name:'QR_LIMIT_STR_SCENE',
+                action_info:{
+                    scene:{
+                       scene_id:'ABC' 
+                    }
+                }
+            }
+            var qr1 = yield wechatApi.createQrcode(tempQr)
+            var qr1 = yield wechatApi.createQrcode(permQr)
+            var qr1 = yield wechatApi.createQrcode(permStrQr)
+        }
+        else if(content ==='19') {
+            var longUrl = 'http://ww.imooc.com/'
+            var shotData = yield wechatApi.createShorurl('long2short',longUrl);
+        }
+        else if(content ==='20'){
+            var semanticData = {
+                "query":"寻龙诀",
+                "city":"北京",
+                "category": "movie",
+                "uid":message.FromUserName
+            }
+            var _semanticData = yield wechatApi.semantic(semanticData)
+            replay = JOSN.stringify(_semanticData)
+        }
 
         this.body=replay
     }
