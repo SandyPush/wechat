@@ -74,7 +74,7 @@ function _sign(noncestr,ticket,timestamp,url){
 // url=http://mp.weixin.qq.com?params=value
 function sign(ticket,url) {
     var noncestr = createNoce();
-    var timestamp = creatTimestamp();
+    var timestamp = createTimestamp();
     var signature = _sign(noncestr,ticket,timestamp,url)
     return {
         noncestr:noncestr,
