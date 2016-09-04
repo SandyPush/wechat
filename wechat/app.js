@@ -6,10 +6,10 @@ var path = require('path')
 var util = require("./libs/util")
 var config = require("./config")
 var reply = require('./wx/reply')
-var Wechat = require('./wechat/wechan')
+var Wechat = require('./wechat/wechat')
 var ejs = require('ejs')
 var heredoc = require('heredoc')
-
+var crypto = require('crypto')
 var tpl = heredoc(function(){/*
 <!DOCTYPE html>
 <html>
