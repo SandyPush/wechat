@@ -59,7 +59,7 @@ var createTimestamp = function(){
 function _sign(noncestr,ticket,timestamp,url){
     var params = [
         'noncestr=' + noncestr,
-        'jsapi_ticket=' + jsapi_ticket,
+        'jsapi_ticket=' + ticket,
         'timestamp=' +timestamp,
         'url'+url
     ]
@@ -85,6 +85,7 @@ function sign(ticket,url) {
 app.use(function *(next){
     if(this.url.indexOf('/movie')> -1) {
         var wechatApi = new Wechat(config.wechat)
+
         var data = yield wechatApi.fetchAccessToken()
         var access_token = data.access_token
         var ticketData = yield wechatApi.fetchTicket(access_token)

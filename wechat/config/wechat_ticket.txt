@@ -1,1 +1,1 @@
-wechat_ticket.txt
+{"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest hint: [2i6RtA0322vr37!]","expires_in":null}
