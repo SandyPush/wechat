@@ -935,7 +935,7 @@ Wechat.prototype.updateTicket = function (access_token){
             var now = (new Date().getTime())
             var expires_in = now+(data.expires_in-20)*1000
             data.expires_in = expires_in
-            resolve(data)
+            return resolve(data)
         })
     })
 }
