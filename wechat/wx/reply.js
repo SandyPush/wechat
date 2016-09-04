@@ -334,7 +334,7 @@ exports.replay = function* (next) {
                 "uid":message.FromUserName
             }
             var _semanticData = yield wechatApi.semantic(semanticData)
-            replay = JOSN.stringify(_semanticData)
+            replay = JSON.stringify(_semanticData)
         }
 
         this.body=replay
