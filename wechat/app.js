@@ -31,17 +31,17 @@ var tpl = heredoc(function(){/*
                 nonceStr: '<%= noncestr %>', // 必填，生成签名的随机串
                 signature: '<%= signature %>',// 必填，签名，见附录1
                 jsApiList: [
-                    startRecord,
-                    stopRecord,
-                    onVoiceRecordEnd,
-                    onVoicePlayEnd,
-                    uploadVoice,
-                    downloadVoice,
-                    chooseImage,
-                    previewImage,
-                    uploadImage,
-                    downloadImage,
-                    translateVoice
+                    "startRecord",
+                    "stopRecord",
+                    "onVoiceRecordEnd",
+                    "onVoicePlayEnd",
+                    "uploadVoice",
+                    "downloadVoice",
+                    "chooseImage",
+                    "previewImage",
+                    "uploadImage",
+                    "downloadImage",
+                    "translateVoice"
                 ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             });
         </script>
@@ -88,11 +88,12 @@ app.use(function *(next){
         var data = yield wechatApi.fetchAccessToken()
         var access_token = data.access_token
         var ticketData = yield wechatApi.fetchTicket(access_token)
-        var ticket = ticketData.ticket
+        var ticket = data.ticket
         var url = this.href
         var params = sign(ticket,url)
-        this.body = ejs.render(tpl,params)
         console.log(params)
+
+        this.body = ejs.render(tpl,params)
 
         return next
     }
