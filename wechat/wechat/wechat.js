@@ -7,7 +7,7 @@ var fs = require('fs')
 var prefix = "https://api.weixin.qq.com/cgi-bin/"
 var mpPrefix = "https://mp.weixin.qq.com/cgi-bin/"
 var api = {
-    semanticUrl : "https://api.weixin.qq.com/semantic/semproxy/search?"
+    semanticUrl : "https://api.weixin.qq.com/semantic/semproxy/search?",
     accessToken:prefix+"token?grant_type=client_credential",
     temporary: {
         upload:prefix+"media/upload?",
