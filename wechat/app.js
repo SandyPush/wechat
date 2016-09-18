@@ -75,6 +75,7 @@ function _sign(noncestr,ticket,timestamp,url){
 function sign(ticket,url) {
     var noncestr = createNoce();
     var timestamp = createTimestamp();
+    console.log(noncestr)
     var signature = _sign(noncestr,ticket,timestamp,url)
     console.log(ticket)
     console.log(url)
