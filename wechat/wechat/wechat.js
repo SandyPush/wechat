@@ -948,6 +948,7 @@ Wechat.prototype.isValidTicket = function (data){
         return true
     }
     else {
+        console.log('false')
         return false
     }
 }
