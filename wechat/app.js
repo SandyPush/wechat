@@ -79,6 +79,7 @@ function sign(ticket,url) {
     var signature = _sign(noncestr,ticket,timestamp,url)
     console.log(ticket)
     console.log(url)
+    console.log(signature)
     return {
         noncestr:noncestr,
         timestamp:timestamp,
@@ -88,7 +89,6 @@ function sign(ticket,url) {
 app.use(function *(next){
     if(this.url.indexOf('/movie')> -1) {
         var wechatApi = new Wechat(config.wechat)
-
         var data = yield wechatApi.fetchAccessToken()
         var access_token = data.access_token
         var ticketData = yield wechatApi.fetchTicket(access_token)
