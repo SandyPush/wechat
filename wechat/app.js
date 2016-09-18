@@ -92,8 +92,9 @@ app.use(function *(next){
         var ticket = ticketData.ticket
         var url = this.href.replace(":8000",'')
         console.log(url);
+        console.log(ticketData);
+        console.log(access_token);
         var params = sign(ticket,url)
-        console.log(params)
 
         this.body = ejs.render(tpl,params)
 
