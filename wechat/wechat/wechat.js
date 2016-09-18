@@ -884,8 +884,6 @@ Wechat.prototype.semantic = function(semanticData) {
             .then(function(data){
                 var url = api.semanticUrl+'access_token='+data.access_token
                 semanticData.appid = data.appID
-
-
                 request({method:'POST',body:semanticData,url:url,json:true}).then(function(response) {
                    var _data = response[1]
                    if(_data){
@@ -908,10 +906,8 @@ Wechat.prototype.fetchTicket = function(access_token) {
         .then(function(data){
             try{
                 data = JSON.parse(data)
-                console.log(data);
             }
             catch(e) {
-
                 return that.updateTicket(access_token)
             }
             

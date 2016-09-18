@@ -93,7 +93,6 @@ app.use(function *(next){
         var ticketData = yield wechatApi.fetchTicket(access_token)
         var ticket = ticketData.ticket
         var url = this.href.replace(":8000",'')
-
         var params = sign(ticket,url)
         this.body = ejs.render(tpl,params)
 
