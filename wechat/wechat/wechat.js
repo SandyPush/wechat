@@ -908,7 +908,6 @@ Wechat.prototype.fetchTicket = function(access_token) {
                 data = JSON.parse(data)
             }
             catch(e) {
-                console.log('updateTicket');
                 return that.updateTicket(access_token)
             }
             
@@ -944,7 +943,7 @@ Wechat.prototype.isValidTicket = function (data){
     var ticket = data.access_token
     var expires_in = data.expires_in
     var now = (new Date().getTime())
-    if(ticket && tinow<expires_in){
+    if(ticket && now<expires_in){
         console.log('true')
         return true
     }
