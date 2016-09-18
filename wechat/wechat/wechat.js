@@ -941,7 +941,7 @@ Wechat.prototype.isValidTicket = function (data){
     if (!data || !data.ticket || !data.expires_in) {
         return false
     }
-    var ticket = data.access_token
+    var ticket = data.ticket
     var expires_in = data.expires_in
     var now = (new Date().getTime())
     if(ticket && now<expires_in){
