@@ -76,6 +76,8 @@ function sign(ticket,url) {
     var noncestr = createNoce();
     var timestamp = createTimestamp();
     var signature = _sign(noncestr,ticket,timestamp,url)
+    console.log(ticket)
+    console.log(url)
     return {
         noncestr:noncestr,
         timestamp:timestamp,
@@ -91,9 +93,7 @@ app.use(function *(next){
         var ticketData = yield wechatApi.fetchTicket(access_token)
         var ticket = ticketData.ticket
         var url = this.href.replace(":8000",'')
-        console.log(url);
-        console.log(ticketData);
-        console.log(access_token);
+
         var params = sign(ticket,url)
 
         this.body = ejs.render(tpl,params)
