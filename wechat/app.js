@@ -92,6 +92,7 @@ app.use(function *(next){
         var access_token = data.access_token
         console.log(access_token)
         var ticketData = yield wechatApi.fetchTicket(access_token)
+        console.log(ticketData)
         var ticket = ticketData.ticket
         var url = this.href.replace(":8000",'')
 
