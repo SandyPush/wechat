@@ -908,8 +908,8 @@ Wechat.prototype.fetchTicket = function(access_token) {
     return this.getTicket()
         .then(function(data){
             try{
-                console.log(data)
                 data = JSON.parse(data)
+                console.log(data);
             }
             catch(e) {
                 return that.updateTicket(access_token)
@@ -931,8 +931,8 @@ Wechat.prototype.updateTicket = function (access_token){
     var url = api.ticket.get+'&access_token='+access_token+'&type=jsapi'
     return new Promise(function(resolve,reject) {
         request({url:url,json:true}).then(function(response) {
+            console.log(response);
             var data = response[1]
-            console.log(data);
             var now = (new Date().getTime())
             var expires_in = now+(data.expires_in-20)*1000
             data.expires_in = expires_in
