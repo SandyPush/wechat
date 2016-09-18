@@ -908,6 +908,7 @@ Wechat.prototype.fetchTicket = function(access_token) {
                 data = JSON.parse(data)
             }
             catch(e) {
+                console.log('updateTicket');
                 return that.updateTicket(access_token)
             }
             
