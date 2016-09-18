@@ -904,7 +904,6 @@ Wechat.prototype.semantic = function(semanticData) {
 
 Wechat.prototype.fetchTicket = function(access_token) {
     var that = this
-
     return this.getTicket()
         .then(function(data){
             try{
@@ -912,6 +911,7 @@ Wechat.prototype.fetchTicket = function(access_token) {
                 console.log(data);
             }
             catch(e) {
+
                 return that.updateTicket(access_token)
             }
             
@@ -919,7 +919,8 @@ Wechat.prototype.fetchTicket = function(access_token) {
                 return Promise.resolve(data)
             }
             else {
-                return that.updateTicket()
+                
+                return that.updateTicket(access_token)
             }
         })
         .then(function(data){
