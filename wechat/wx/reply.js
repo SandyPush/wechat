@@ -3,7 +3,7 @@ var config = require("../config")
 var path = require("path")
 var Wechat = require("../wechat/wechat")
 
-var menu = require("./menu")
+var createMenu = require("./menu")
 var wechatApi = new Wechat(config.wechat)
 
 exports.replay = function* (next) {
