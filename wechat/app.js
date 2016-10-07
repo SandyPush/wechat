@@ -20,7 +20,7 @@ var tpl = heredoc(function(){/*
     <body>
         <h1>点击标题开始录音翻译</h1>
         <p id="title"></p>
-        <div id="doctor"></div>
+        <div id="directors"></div>
         <div id="year"></div>
         <div id="poster"></div>
         <script src='http://zeptojs.com/zepto.min.js'></script>
@@ -74,7 +74,22 @@ var tpl = heredoc(function(){/*
                                localId: localId,
                                 isShowProgressTips: 1, 
                                 success: function (res) {
-                                    alert(res.translateResult)
+                                    var result = res.translateResult;
+                                 //   /v2/movie/search?q=张艺谋 GET /v2/movie/search?tag=喜剧
+                                    $.ajax({
+                                        type:'get',
+                                        url:"https://api.douban.com/v2/movie/search?q="+result,
+                                        dataType:'jsonp',
+                                        jsonp:'callback',
+                                        success:function(data){
+                                            var subject = data.subjects[0]
+                                            $("#title").html(subject.title)
+                                            $("#director").html(subject.directors[0].name)
+                                            $("#poster").html("<img src='"+subject.images.large+"' />")
+                                        }
+                                    })
+
+
                                 }
                             })
                         }
