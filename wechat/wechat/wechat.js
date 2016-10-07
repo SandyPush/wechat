@@ -192,7 +192,7 @@ Wechat.prototype.uploadMaterial = function(type,material,permanent) {
                }
             })
             .catch(function(err){
-                return rejact(err)
+                 reject(err)
             })
         })
     })
