@@ -18,7 +18,7 @@ var tpl = heredoc(function(){/*
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     </head>
     <body>
-        <h1>点击标题开始录音翻译</h1>
+        <h1>点击后说出要搜索的电影名</h1>
         <p id="title"></p>
         <div id="director"></div>
         <div id="year"></div>
@@ -63,6 +63,7 @@ var tpl = heredoc(function(){/*
 
                 $("h1").on('click',function(){
                     if(!isRecording){
+                        $("h1").html("点击开始搜索")
                         isRecording = true
                         wx.startRecord({
                             cancel: function(){
@@ -79,6 +80,7 @@ var tpl = heredoc(function(){/*
                                localId: localId,
                                 isShowProgressTips: 1, 
                                 success: function (res) {
+                                    $("h1").html("点击后说出要搜索的电影名")
                                     var result = res.translateResult;
                                     if(!result){
                                         alert("对不起没有听清楚")
