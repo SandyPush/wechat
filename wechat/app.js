@@ -48,21 +48,15 @@ var tpl = heredoc(function(){/*
             })
             wx.ready(function(){
 
-                wx.checkJsApi({
-                    jsApiList: ['onVoiceRecordEnd'],
-                    success: function(res) {
-                        console.log(res)
-                    }
-                })
                 
                 var isRecording= false
                 $("h1").on('tap',function(){
-                    alert('点击了我')
+                    window.alert('点击了我')
                     if(!isRecording){
                         isRecording = true
                         wx.startRecord({
                             cancel: function(){
-                                alert('不能录音了')
+                                window.alert('不能录音了')
                             }
                         })
                         return 
@@ -75,7 +69,7 @@ var tpl = heredoc(function(){/*
                                localId: localId,
                                 isShowProgressTips: 1, 
                                 success: function (res) {
-                                    alert(res.translateResult)
+                                    window.alert(res.translateResult)
                                 }
                             })
                         }
