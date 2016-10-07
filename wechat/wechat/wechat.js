@@ -182,7 +182,7 @@ Wechat.prototype.uploadMaterial = function(type,material,permanent) {
                 }
 
             request(options).then(function(response) {
-               var _data = response[1]
+               var _data = response.body
                
                if(_data){
                     resolve(_data)
