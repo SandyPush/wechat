@@ -27,7 +27,7 @@ var tpl = heredoc(function(){/*
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script>
             wx.config({
-                debug: true, 
+                debug: false, 
                 appId: '<%= appId %>', 
                 timestamp:'<%= timestamp %>',
                 nonceStr: '<%= noncestr %>', 
@@ -57,7 +57,6 @@ var tpl = heredoc(function(){/*
                 
                 var isRecording= false
                 $("h1").on('click',function(){
-                    window.alert('点击了我')
                     if(!isRecording){
                         isRecording = true
                         wx.startRecord({
