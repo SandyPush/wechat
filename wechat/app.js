@@ -80,6 +80,10 @@ var tpl = heredoc(function(){/*
                                 isShowProgressTips: 1, 
                                 success: function (res) {
                                     var result = res.translateResult;
+                                    if(!result){
+                                        alert("对不起没有听清楚")
+                                        return false
+                                    }
                                     $.ajax({
                                         type:'get',
                                         url:"https://api.douban.com/v2/movie/search?q="+result,
@@ -87,6 +91,10 @@ var tpl = heredoc(function(){/*
                                         jsonp:'callback',
                                         success:function(data){
                                             var subject = data.subjects[0]
+                                            if(!subject){
+                                                alert("对不起，未找到"+result+"相关的电影")
+                                                return false
+                                            }
                                             $("#title").html(subject.title)
                                             $("#year").html(subject.year)
                                             $("#director").html(subject.directors[0].name)
