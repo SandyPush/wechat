@@ -84,6 +84,7 @@ var tpl = heredoc(function(){/*
                                         success:function(data){
                                             var subject = data.subjects[0]
                                             $("#title").html(subject.title)
+                                            $("#year").html(subject.year)
                                             $("#director").html(subject.directors[0].name)
                                             $("#poster").html("<img src='"+subject.images.large+"' />")
                                         }
