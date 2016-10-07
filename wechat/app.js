@@ -57,6 +57,7 @@ var tpl = heredoc(function(){/*
                 
                 var isRecording= false
                 $("h1").on('tap',function(){
+                    alert('点击了我')
                     if(!isRecording){
                         isRecording = true
                         wx.startRecord({
