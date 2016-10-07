@@ -82,11 +82,13 @@ var tpl = heredoc(function(){/*
                                         dataType:'jsonp',
                                         jsonp:'callback',
                                         success:function(data){
-                                            var subject = data.subjects[0]
-                                            $("#title").html(subject.title)
-                                            $("#year").html(subject.year)
-                                            $("#director").html(subject.directors[0].name)
-                                            $("#poster").html("<img src='"+subject.images.large+"' />")
+                                            data.subjects.forEach(function(subject){
+                                                $("#title").append(subject.title)
+                                                $("#year").append(subject.year)
+                                                $("#director").append(subject.directors[0].name)
+                                                $("#poster").append("<img src='"+subject.images.large+"' />")
+                                            })
+                               
                                         }
                                     })
 
