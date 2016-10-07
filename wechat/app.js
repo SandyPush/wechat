@@ -61,7 +61,7 @@ function _sign(noncestr,ticket,timestamp,url){
         'noncestr=' + noncestr,
         'jsapi_ticket=' + ticket,
         'timestamp=' +timestamp,
-        'url'+url
+        'url='+url
     ]
     var str = params.sort().join("&")
     var shasum = crypto.createHash('sha1')
