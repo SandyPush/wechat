@@ -180,7 +180,6 @@ Wechat.prototype.uploadMaterial = function(type,material,permanent) {
                 else {
                     options.formData = form
                 }
-              console.log(options);
             request(options).then(function(response) {
                var _data = response[1]
                
@@ -233,7 +232,7 @@ Wechat.prototype.fetchMaterial = function(mediaId,type,permanent) {
                        }
                     })
                     .catch(function(err){
-                        return rejact(err)
+                        reject(err)
                     })
                 }
                 else{
@@ -262,7 +261,7 @@ Wechat.prototype.deleteMaterial = function(mediaId) {
                    }
                 })
                 .catch(function(err){
-                    return rejact(err)
+                    reject(err)
                 })
         })
     })
@@ -288,7 +287,7 @@ Wechat.prototype.updateMaterial = function(mediaId,news) {
                    }
                 })
                 .catch(function(err){
-                    return rejact(err)
+                    reject(err)
                 })
         })
     })
