@@ -15,7 +15,7 @@ var tpl = heredoc(function(){/*
 <html>
     <head>
         <title>猜电影</title>
-        <meta name="viewport" content="inital-scale=1,maximum-scale=1,minmun-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     </head>
     <body>
         <h1>点击标题开始录音翻译</h1>
