@@ -112,7 +112,7 @@ exports.replay = function* (next) {
             }
         }
         else if(content=='7'){
-            var data = yield wechatApi.uploadMaterial('image',path.join(__dirname,'../6.mp4'))
+            var data = yield wechatApi.uploadMaterial('image',path.join(__dirname,'../2.jpg'))
             console.log(data)
             replay = {
                 type:'music',
