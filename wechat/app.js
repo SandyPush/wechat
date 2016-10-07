@@ -20,7 +20,7 @@ var tpl = heredoc(function(){/*
     <body>
         <h1>点击标题开始录音翻译</h1>
         <p id="title"></p>
-        <div id="directors"></div>
+        <div id="director"></div>
         <div id="year"></div>
         <div id="poster"></div>
         <script src='http://zeptojs.com/zepto.min.js'></script>
