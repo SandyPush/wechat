@@ -19,7 +19,9 @@ var tpl = heredoc(function(){/*
     </head>
     <body>
         <h1>点击标题开始录音翻译</h1>
-        <p id="poster"></p>
+        <p id="title"></p>
+        <div id="doctor"></div>
+        <div id="year"></div>
         <div id="poster"></div>
         <script src='http://zeptojs.com/zepto.min.js'></script>
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -44,6 +46,17 @@ var tpl = heredoc(function(){/*
                     "translateVoice"
                 ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             });
+            wx.ready(function(){
+
+                wx.checkJsApi({
+                    jsApiList: ['onVoiceRecordEnd'],
+                    success: function(res) {
+                        console.log(res)
+                    }
+                });
+    
+            });
+
         </script>
     </body>
 </html>
