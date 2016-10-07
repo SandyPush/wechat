@@ -19,7 +19,10 @@ var tpl = heredoc(function(){/*
     </head>
     <body>
         <h1>点击标题开始录音翻译</h1>
-        <div id="main"></div>
+        <p id="title"></p>
+        <div id="director"></div>
+        <div id="year"></div>
+        <div id="poster"></div>
         <script src='http://zeptojs.com/zepto.min.js'></script>
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script>
@@ -45,14 +48,19 @@ var tpl = heredoc(function(){/*
             })
             wx.ready(function(){
 
+
                 wx.checkJsApi({
                     jsApiList: ['onVoiceRecordEnd'],
                     success: function(res) {
                         console.log(res)
                     }
                 })
-                
+                var slides
                 var isRecording= false
+                $("#poster").on('click',function(){
+                    wx.previewImage(slides)
+                })
+
                 $("h1").on('click',function(){
                     if(!isRecording){
                         isRecording = true
@@ -72,22 +80,25 @@ var tpl = heredoc(function(){/*
                                 isShowProgressTips: 1, 
                                 success: function (res) {
                                     var result = res.translateResult;
-                                 //   /v2/movie/search?q=张艺谋 GET /v2/movie/search?tag=喜剧
                                     $.ajax({
                                         type:'get',
                                         url:"https://api.douban.com/v2/movie/search?q="+result,
                                         dataType:'jsonp',
                                         jsonp:'callback',
                                         success:function(data){
-                                            var html = ""
-                                            data.subjects.forEach(function(subject){
-                                                html+='<p id="title">'+subject.title+'</p>\
-                                                <div >'+subject.year+'</div>\
-                                                <div >'+subject.directors[0].name+'</div>\
-                                                <div ><img src="'+subject.images.large+'" /></div>'
+                                            var subject = data.subjects[0]
+                                            $("#title").html(subject.title)
+                                            $("#year").html(subject.year)
+                                            $("#director").html(subject.directors[0].name)
+                                            $("#poster").html("<img src='"+subject.images.large+"' />")
+                                            slides = {
+                                                current:subject.images.large,
+                                                urls:[subject.images.large],
+                                            }
+                                            data.subjects.forEach(function(item){
+                                                slides.urls.push(item.images.large)
                                             })
-                                            $("#main").html(html)
-                               
+
                                         }
                                     })
 
