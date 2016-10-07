@@ -19,10 +19,7 @@ var tpl = heredoc(function(){/*
     </head>
     <body>
         <h1>点击标题开始录音翻译</h1>
-        <p id="title"></p>
-        <div id="director"></div>
-        <div id="year"></div>
-        <div id="poster"></div>
+        <div></div>
         <script src='http://zeptojs.com/zepto.min.js'></script>
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script>
@@ -82,12 +79,14 @@ var tpl = heredoc(function(){/*
                                         dataType:'jsonp',
                                         jsonp:'callback',
                                         success:function(data){
+                                            var html = ""
                                             data.subjects.forEach(function(subject){
-                                                $("#title").append(subject.title)
-                                                $("#year").append(subject.year)
-                                                $("#director").append(subject.directors[0].name)
-                                                $("#poster").append("<img src='"+subject.images.large+"' />")
+                                                html+='<p id="title">'+subject.title+'</p>\
+                                                <div id="director">'+subject.year+'</div>\
+                                                <div id="year">'+subject.directors[0].name+'</div>\
+                                                <div id="poster"><img src="'+subject.images.large+'" /></div>'
                                             })
+                                            $("div").html(html)
                                
                                         }
                                     })
