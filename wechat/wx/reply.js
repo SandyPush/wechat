@@ -7,14 +7,14 @@ var menu = require("./menu")
 var wechatApi = new Wechat(config.wechat)
 
 exports.replay = function* (next) {
-    wechatApi.deleteMenu()
-    .then(function(){
-        return wechatApi.createMenu(menu)
-    })
-    .then(function(msg){
-        console.log(msg)
-        console.log('更新菜单')
-    })
+    // wechatApi.deleteMenu()
+    // .then(function(){
+    //     return wechatApi.createMenu(menu)
+    // })
+    // .then(function(msg){
+    //     console.log(msg)
+    //     console.log('更新菜单')
+    // })
     var message = this.weixin
     if(message.MsgType ==='event') {
         if(message.Event ==='subscribe') {
@@ -112,7 +112,7 @@ exports.replay = function* (next) {
             }
         }
         else if(content=='7'){
-            var data = yield wechatApi.uploadMaterial('image',path.join(__dirname,'../2.jpg'))
+            var data = yield wechatApi.uploadMaterial('image',path.join(__dirname,'../6.mp4'))
             console.log(data)
             replay = {
                 type:'music',
